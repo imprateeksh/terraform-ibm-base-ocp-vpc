@@ -3,7 +3,7 @@
 ##############################################################################
 
 # Resource Group Variables
-variable "resource_group_id" {
+variable "group_id" {
   type        = string
   description = "The Id of an existing IBM Cloud resource group where the cluster will be grouped."
 }
@@ -13,7 +13,7 @@ variable "region" {
   description = "The IBM Cloud region where the cluster will be provisioned."
 }
 
-variable "use_private_endpoint" {
+variable "private_endpoint" {
   type        = bool
   description = "Set this to true to force all api calls to use the IBM Cloud private endpoints."
   default     = false
@@ -31,7 +31,7 @@ variable "cluster_name" {
   description = "The name that will be assigned to the provisioned cluster"
 }
 
-variable "vpc_subnets" {
+variable "subnets" {
   type = map(list(object({
     id         = string
     zone       = string
@@ -40,7 +40,7 @@ variable "vpc_subnets" {
   description = "Metadata that describes the VPC's subnets. Obtain this information from the VPC where this cluster will be created"
 }
 
-variable "allow_default_worker_pool_replacement" {
+variable "default_worker_pool_replacement" {
   type        = bool
   description = "(Advanced users) Set to true to allow the module to recreate a default worker pool. If you wish to make any change to the default worker pool which requires the re-creation of the default pool follow these [steps](https://github.com/terraform-ibm-modules/terraform-ibm-base-ocp-vpc?tab=readme-ov-file#important-considerations-for-terraform-and-default-worker-pool)."
   default     = false
